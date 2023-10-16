@@ -1,0 +1,114 @@
+{
+    "layer": "top",    
+    "height": 30, 
+    "spacing": 3,
+    "modules-left": ["hyprland/workspaces","hyprland/window"],
+    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "battery", "clock", "tray"],
+
+    "hyprland/workspaces": {
+         "persistent_workspaces" : {
+		"1": [],
+		"2": [],
+		"3": [],
+		"4": [],
+},
+	 "disable-scroll": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "", 
+             "urgent": "",
+             "focused": ""
+         },
+     "on-click":"activate"
+     },
+
+    "mpd": {
+        "format": "{title} {elapsedTime:%H:%M:%S}/{totalTime:%H:%M:%S}",
+        "format-disconnected": "Disconnected",
+        "format-stopped": "{consumeIcon} {randomIcon} {repeatIcon} {singleIcon} Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": " "
+        },
+        "state-icons": {
+	    "paused": " ",
+            "playing": " "
+	    
+        },
+	"on-click": "~/.config/waybar/coran.sh",
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d/%m/%Y}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    
+    "battery": {
+        "states": {
+            "perfect": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-warning": "{capacity}% {icon}",
+        "format-critical": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-perfect": "{icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰝟  {icon} {format_source}",
+        "format-muted": "{volume}% 󰝟  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+    },
+}

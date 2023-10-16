@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+file=$1
+w=$2
+h=$3
+x=$4
+y=$5
+
+~/.config/lf/scripts/lf_kitty_clean
+
+if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+else
+if [[ "$filetype" =~ ^video ]]; then
+    # vidthumb is from here:
+    # https://raw.githubusercontent.com/duganchen/kitty-pistol-previewer/main/vidthumb
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$(~/.config/lf/scripts/vidthumb "$file")" < /dev/null > /dev/tty
+else
+ /home/haissam/go/bin/pistol "$file"
+fi
+fi
+ exit 0
